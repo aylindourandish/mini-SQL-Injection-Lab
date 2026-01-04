@@ -4,15 +4,11 @@
 
 using namespace std;
 
-/*
-    Simulated database credentials
-*/
+
 const string DB_USERNAME = "admin";
 const string DB_PASSWORD = "12345";
 
-/*
-    Check for common SQL Injection patterns
-*/
+
 bool containsSQLInjection(const string& input) {
     vector<string> patterns = {
         "OR 1=1",
@@ -34,9 +30,7 @@ bool containsSQLInjection(const string& input) {
     return false;
 }
 
-/*
-    Vulnerable login function
-*/
+
 bool vulnerableLogin(const string& username, const string& password) {
     string query =
         "SELECT * FROM users WHERE username = '" +
@@ -45,7 +39,7 @@ bool vulnerableLogin(const string& username, const string& password) {
     cout << "\n[DEBUG] SQL Query Sent to Database:" << endl;
     cout << query << endl;
 
-    // Simulated vulnerable behavior
+
     if (containsSQLInjection(username) || containsSQLInjection(password)) {
         cout << "[WARNING] SQL Injection pattern detected, but query was executed anyway." << endl;
         return true;
@@ -54,11 +48,9 @@ bool vulnerableLogin(const string& username, const string& password) {
     return (username == DB_USERNAME && password == DB_PASSWORD);
 }
 
-/*
-    Secure login function
-*/
+
 bool secureLogin(const string& username, const string& password) {
-    // Simulating prepared statement behavior
+
     if (containsSQLInjection(username) || containsSQLInjection(password)) {
         cout << "[INFO] Input rejected due to unsafe characters." << endl;
         return false;
