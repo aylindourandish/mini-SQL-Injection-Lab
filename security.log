@@ -1,0 +1,5 @@
+[INFO] User admin logged in successfully
+[WARN] Failed login attempt for user admin
+[WARN] Failed login attempt for user admin
+[ERROR] SQL syntax error near 'OR 1=1'
+[WARN] Unauthorized access detected
